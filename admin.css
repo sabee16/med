@@ -1,0 +1,83 @@
+/* Admin panel styles (builds on style.css) */
+body.admin { background: var(--g50); min-height: 100vh; }
+/* make the hidden attribute win over display:grid etc. */
+.admin [hidden] { display: none !important; }
+.a-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.a-card { background: var(--white); border: 2px solid var(--border); border-radius: var(--radius); padding: 32px; width: min(420px, 100%); }
+.a-card h1 { font-size: 28px; margin: 14px 0 6px; }
+.a-card p { color: var(--g700); }
+.a-card code { background: var(--g100); padding: 2px 6px; border-radius: 6px; }
+.a-login { display: grid; gap: 4px; }
+.a-login img { height: 58px; width: auto; }
+.a-login .btn { margin-top: 18px; }
+.a-back { margin-top: 14px; text-align: center; font-size: 14px; color: var(--g700); }
+.a-error { color: #b00020; font-size: 14px; margin-top: 12px; }
+
+.a-top { position: sticky; top: 0; z-index: 40; background: var(--white); border-bottom: 1.5px solid var(--border); }
+.a-top-in { max-width: 1200px; margin: 0 auto; padding: 6px 16px; display: flex; align-items: center; gap: 14px; }
+.a-title { font-family: var(--display); font-size: 20px; margin-right: auto; }
+.a-user { font-size: 13px; color: var(--g500); }
+.a-main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+
+.a-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 18px; }
+.a-search, .a-bar select { border: 1.5px solid var(--border); border-radius: 999px; padding: 10px 16px; background: var(--white); font-size: 14px; }
+.a-search { flex: 1; min-width: 180px; }
+.a-bar .count { margin-left: auto; }
+
+.a-table-wrap { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow-x: auto; }
+.a-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.a-table th, .a-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--g100); vertical-align: middle; }
+.a-table th { background: var(--g50); font-size: 13px; color: var(--g700); white-space: nowrap; }
+.a-table tbody tr:last-child td { border-bottom: 0; }
+.a-table tbody tr:hover { background: #f7fbfe; }
+.a-table .num { text-align: right; white-space: nowrap; }
+.a-table .act { text-align: right; white-space: nowrap; }
+.a-name { font-weight: 700; }
+.a-flag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-right: 4px; background: var(--g100); color: var(--brand-dark); }
+.a-flag.rx { background: #fde8ea; color: #b00020; }
+.a-btn { border: 1.5px solid var(--border); background: var(--white); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 700; }
+.a-btn:hover { background: var(--g100); }
+.a-btn.del { color: #b00020; }
+.a-btn.del:hover { background: #fde8ea; }
+
+.btn-danger { background: #b00020; color: var(--white); }
+.btn-danger:hover { background: #8d001a; }
+
+.a-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field select { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 11px 14px; font-weight: 400; background: var(--white); }
+.a-checks { display: grid; gap: 8px; margin: 16px 0 4px; font-size: 14px; }
+.a-checks label { display: flex; align-items: center; gap: 8px; }
+#productForm .btn-block { margin-top: 18px; }
+#productForm { padding-bottom: 24px; }
+.a-del { padding: 24px; }
+.a-del h2 { font-size: 22px; margin-bottom: 8px; }
+.a-del-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+
+@media (max-width: 720px) {
+  .a-user { display: none; }
+  .a-two { grid-template-columns: 1fr; }
+  .a-table th:nth-child(3), .a-table td:nth-child(3),
+  .a-table th:nth-child(5), .a-table td:nth-child(5) { display: none; }
+}
+
+/* product thumbnails in the table */
+.a-prod { display: flex; align-items: center; gap: 12px; min-width: 180px; }
+.a-thumb { width: 44px; height: 44px; flex: none; object-fit: cover; border-radius: 10px; border: 1px solid var(--g300); background: var(--white); }
+.a-thumb-empty { display: inline-block; background: var(--g100); }
+
+/* photo slots in the add / edit form */
+.a-images { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.a-img { position: relative; width: 92px; height: 92px; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); background: var(--g50); }
+.a-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.a-img-main { position: absolute; left: 6px; bottom: 6px; padding: 2px 8px; border-radius: 999px; background: var(--brand); color: var(--white); font-size: 11px; font-weight: 700; }
+.a-img-x { position: absolute; top: 5px; right: 5px; width: 24px; height: 24px; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: var(--white); font-size: 16px; line-height: 1; display: grid; place-items: center; cursor: pointer; }
+.a-img-x:hover { background: #b00020; }
+.a-img-add { display: grid; place-items: center; border-style: dashed; color: var(--brand); font-size: 13px; font-weight: 700; text-align: center; cursor: pointer; }
+.a-img-add:hover { background: var(--g100); }
+.field small { font-weight: 400; color: var(--g500); }
+
+/* keep the two-column rows inside the form box, and let the form scroll on short screens */
+.a-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.admin .field input, .admin .field select, .admin .field textarea { width: 100%; min-width: 0; box-sizing: border-box; }
+.admin dialog { max-height: calc(100vh - 32px); overflow-y: auto; }
+@media (max-width: 720px) { .a-two { grid-template-columns: minmax(0, 1fr); } }

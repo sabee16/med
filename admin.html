@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin | Suryah Medicals</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+  <!-- ===== Setup warning ===== -->
+  <div class="a-wrap" id="setupMsg" hidden>
+    <div class="a-card">
+      <h1>Supabase is not connected yet</h1>
+      <p>Open <code>supabase-config.js</code> and paste your Project URL and anon key, then reload this page.</p>
+    </div>
+  </div>
+
+  <!-- ===== Login ===== -->
+  <div class="a-wrap" id="loginView" hidden>
+    <form class="a-card a-login" id="loginForm">
+      <img src="logo.png" alt="Suryah Medicals" height="58">
+      <h1>Admin login</h1>
+      <label class="field"><span>Email</span><input type="email" id="loginEmail" autocomplete="username" required></label>
+      <label class="field"><span>Password</span><input type="password" id="loginPass" autocomplete="current-password" required></label>
+      <p class="a-error" id="loginError" role="alert" hidden></p>
+      <button class="btn btn-dark btn-block" id="loginBtn" type="submit">Log in</button>
+      <a class="a-back" href="index.html">Back to website</a>
+    </form>
+  </div>
+
+  <!-- ===== Dashboard ===== -->
+  <div id="appView" hidden>
+    <header class="a-top">
+      <div class="a-top-in">
+        <a class="brand" href="index.html" aria-label="Back to website"><img src="logo.png" alt="Suryah Medicals" width="116" height="58"></a>
+        <strong class="a-title">Product admin</strong>
+        <span class="a-user" id="userEmail"></span>
+        <a class="btn btn-outline btn-sm" href="products.html" target="_blank" rel="noopener">View site</a>
+        <button class="btn btn-dark btn-sm" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </header>
+
+    <main class="a-main">
+      <div class="a-bar">
+        <input class="a-search" id="q" type="search" placeholder="Search products" aria-label="Search products">
+        <select id="catFilter" aria-label="Filter by category"></select>
+        <span class="count" id="count" aria-live="polite"></span>
+        <button class="btn btn-dark" id="addBtn" type="button">+ Add product</button>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th>Product</th><th>Category</th><th>Pack</th><th class="num">Price</th><th class="num">MRP</th><th>Flags</th><th class="act">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p class="empty" id="empty" hidden>No products found.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Add / edit dialog ===== -->
+  <dialog id="formDialog" aria-labelledby="formTitle">
+    <form id="productForm">
+      <div class="drawer-head">
+        <h2 id="formTitle">Add product</h2>
+        <button class="icon-btn" type="button" id="formClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+      <input type="hidden" id="fId">
+      <label class="field"><span>Name</span><input type="text" id="fName" required maxlength="120"></label>
+      <div class="a-two">
+        <label class="field"><span>Category</span><select id="fCat" required></select></label>
+        <label class="field"><span>Pack size</span><input type="text" id="fPack" placeholder="e.g. Strip of 10, 200 ml" maxlength="60"></label>
+      </div>
+      <div class="a-two">
+        <label class="field"><span>Price (₹)</span><input type="number" id="fPrice" min="0" step="0.01" required></label>
+        <label class="field"><span>MRP (₹), optional</span><input type="number" id="fMrp" min="0" step="0.01" placeholder="Shows a Save tag"></label>
+      </div>
+      <label class="field"><span>Picture style</span><select id="fShape">
+        <option value="bottle">Bottle</option><option value="jar">Jar</option><option value="tube">Tube</option>
+        <option value="box">Box</option><option value="strip">Tablet strip</option><option value="device">Device</option>
+      </select></label>
+      <label class="field"><span>Description, optional</span><textarea id="fDesc" rows="3" maxlength="600" placeholder="Short details about the product"></textarea></label>
+      <div class="field">
+        <span>Photos <small id="imgCount">(0 of 3)</small></span>
+        <div class="a-images" id="fImages"></div>
+        <small class="note">The first photo is the main one. Photos are shrunk automatically before upload.</small>
+      </div>
+      <div class="a-checks">
+        <label><input type="checkbox" id="fRx"> Needs prescription (Rx)</label>
+        <label><input type="checkbox" id="fDeal"> Show in "Today's best deals"</label>
+      </div>
+      <p class="a-error" id="formError" role="alert" hidden></p>
+      <button class="btn btn-dark btn-block" id="saveBtn" type="submit">Save product</button>
+    </form>
+  </dialog>
+
+  <!-- ===== Delete confirm ===== -->
+  <dialog id="delDialog" aria-labelledby="delTitle">
+    <form method="dialog" class="a-del">
+      <h2 id="delTitle">Delete product?</h2>
+      <p id="delText"></p>
+      <div class="a-del-actions">
+        <button class="btn btn-outline" value="cancel">Cancel</button>
+        <button class="btn btn-danger" id="delConfirm" value="ok" type="button">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All products | Suryah Medicals, Neelankarai, Chennai</title>
+  <meta name="description" content="Browse all medicines, baby care, supplements, sports nutrition, herbal and personal care products at Suryah Medicals.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="products" data-cat="all">
+
+  <a class="skip" href="#shop">Skip to products</a>
+
+  <header class="site-header">
+    <nav class="bar" aria-label="Main">
+      <a class="brand" href="index.html" aria-label="Suryah Medicals home">
+        <img src="logo.png" alt="Suryah Medicals" width="116" height="58">
+      </a>
+
+      <select id="navCategory" class="bar-select" aria-label="Category"></select>
+
+      <form class="search" id="searchForm" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="searchInput" type="search" placeholder="Search medicines, health products" aria-label="Search products" autocomplete="off">
+      </form>
+
+      <a class="bar-loc" href="index.html#visit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>
+        <span><small>Our store</small>Neelankarai, Chennai</span>
+      </a>
+
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.200 11h10.500L20 8H6.500"/><circle cx="9" cy="19.500" r="1.200"/><circle cx="17" cy="19.500" r="1.200"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+
+      <button class="btn btn-dark" data-open-rx>Upload prescription</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="page-head">
+      <span class="page-head-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+      <div>
+        <p class="crumbs"><a href="index.html">Home</a> / All products</p>
+        <h1>All products</h1>
+        <p>Everything in one place. Pick a category above, or search by name.</p>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <nav class="tabs" id="tabs" aria-label="Product categories"></nav>
+      <div class="section-head">
+        <h2 class="visually-hidden">Products</h2>
+        <span class="count" id="shopCount" aria-live="polite"></span>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty" id="empty" hidden>No products found here. Call 90947 98472 and we will check stock for you.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <!-- To use your real shop photo: save it as store-photo.png and change src below to "store-photo.png" -->
+        <img class="footer-photo" src="logo.png" alt="Suryah Medicals logo" width="80" height="80">
+        <div>
+          <h2>Suryah Medicals</h2>
+          <p>Your neighbourhood pharmacy in Neelankarai, ECR, Chennai.</p>
+          <p class="trust">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.500-3 8.200-7 10-4-1.800-7-5.500-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            Trusted healthcare essentials
+          </p>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Quick links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="index.html#visit">About Us</a></li>
+          <li><a href="index.html#visit">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Customer support">
+        <h3>Customer Support</h3>
+        <ul>
+          <li><a href="tel:+919094798472">Call the pharmacist</a></li>
+          <li><a href="#" data-wa target="_blank" rel="noopener">WhatsApp enquiries</a></li>
+          <li><a href="index.html#visit">Store location</a></li>
+          <li><button type="button" class="linklike" data-open-rx>Prescription information</button></li>
+        </ul>
+      </nav>
+
+      <div class="footer-visit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 005 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>
+        <div>
+          <h3>Visit Our Pharmacy</h3>
+          <p>No. 350/B, ECR, Neelankarai, Chennai, Tamil Nadu - 600 115</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add your drug licence number here, e.g. <p>Drug Licence No.: ...</p> -->
+    <div class="footer-notice">
+      <h3>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        Prescription Notice
+      </h3>
+      <p>Prescription medicines are supplied only against a valid prescription. Product availability and prices are confirmed by the pharmacist.</p>
+    </div>
+
+    <p class="copyright">&copy; <span id="year"></span> Suryah Medicals. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your cart</h2>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot" id="cartFoot">
+      <div class="total"><span>Estimated total</span><strong id="cartTotal">₹0</strong></div>
+      <p class="note" id="rxNote" hidden>Your cart has prescription medicines. Send the prescription photo in the chat.</p>
+      <label class="field">
+        <span>Delivery address</span>
+        <textarea id="address" rows="2" placeholder="House no., street, area"></textarea>
+      </label>
+      <button class="btn btn-dark btn-block" id="checkoutBtn">Send order on WhatsApp</button>
+      <p class="note">The pharmacist will confirm the final price and delivery time.</p>
+    </div>
+  </aside>
+
+  <!-- ===== Prescription dialog ===== -->
+  <dialog id="rxDialog" aria-labelledby="rxTitle">
+    <form method="dialog" id="rxForm">
+      <div class="drawer-head">
+        <h2 id="rxTitle">Upload prescription</h2>
+        <button class="icon-btn" value="cancel" aria-label="Close" formnovalidate>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+      <label class="field">
+        <span>Prescription photo</span>
+        <input type="file" id="rxFile" accept="image/*,application/pdf">
+      </label>
+      <img id="rxPreview" alt="Prescription preview" hidden>
+      <label class="field">
+        <span>Your name</span>
+        <input type="text" id="rxName" autocomplete="name">
+      </label>
+      <label class="field">
+        <span>Phone number</span>
+        <input type="tel" id="rxPhone" autocomplete="tel">
+      </label>
+      <p class="note">WhatsApp opens with your details. Attach the prescription photo in the chat and send it to the pharmacist.</p>
+      <button class="btn btn-dark btn-block" id="rxSend" type="button">Continue on WhatsApp</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="supabase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
